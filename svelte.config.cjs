@@ -1,3 +1,4 @@
+// const netlify = require('@sveltejs/adapter-netlify');
 const static = require('@sveltejs/adapter-static');
 // const node = require('@sveltejs/adapter-node');
 const pkg = require('./package.json');
@@ -9,8 +10,7 @@ module.exports = {
 		// You can create optimized builds for different platforms by
 		// specifying a different adapter
 		adapter: {
-			adapt: static,
-			out: 'gh'
+			adapt: static
 		},
 		// adapter: node(),
 
