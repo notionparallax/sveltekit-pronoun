@@ -62,35 +62,32 @@
 				object: 'Zim',
 				posessive: 'Zis',
 				posessivePronoun: 'Zir',
-				reflexive: 'Zieself'
+				reflexive: 'Zieself',
+				colour: '#00bcd4'
 			},
 			{
 				subject: 'She',
 				object: 'Her',
 				posessive: 'Hers',
 				posessivePronoun: 'Her',
-				reflexive: 'Herself'
+				reflexive: 'Herself',
+				colour: '#ffa000'
 			},
 			{
 				subject: 'He',
 				object: 'Him',
 				posessive: 'His',
 				posessivePronoun: 'His',
-				reflexive: 'Himself'
+				reflexive: 'Himself',
+				colour: '#9e9e9e'
 			},
 			{
 				subject: 'Hep',
 				object: 'Himp',
 				posessive: 'His',
 				posessivePronoun: 'His',
-				reflexive: 'Himself'
-			},
-			{
-				subject: '1',
-				object: '2',
-				posessive: '3',
-				posessivePronoun: '3',
-				reflexive: '5'
+				reflexive: 'Himself',
+				colour: '#009688'
 			}
 		];
 
