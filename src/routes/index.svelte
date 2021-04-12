@@ -1,5 +1,5 @@
 <script>
-	import UrlDisplay  from './UrlDisplay.svelte';
+	import UrlDisplay from './UrlDisplay.svelte';
 
 	let person = {
 		subject: 'He',
@@ -105,82 +105,82 @@
 <svelte:head>
 	<title>Pronoun Badge</title>
 </svelte:head>
+<div class="wrapper">
+	<UrlDisplay {url} {altText} />
 
-<UrlDisplay {url} {altText}/>
-
-<form>
-	<p>
-		Fill in this form with your pronouns. The code snippet above will update as you go.<br />
-		If you don't want to include a section, just leave it blank.
-	</p>
-	<div class="input-group">
-		<label for="subject">subject</label>
-		<input name="subject" bind:value={person.subject} />
-		<p class="note">
-			{person.subject}
-			{person.subject.toLocaleLowerCase() == 'they' ? 'are' : 'is'} amazing.
+	<form>
+		<p>
+			Fill in this form with your pronouns. The code snippet above will update as you go.<br />
+			If you don't want to include a section, just leave it blank.
 		</p>
-	</div>
+		<div class="input-group">
+			<label for="subject">subject</label>
+			<input name="subject" bind:value={person.subject} />
+			<p class="note">
+				{person.subject}
+				{person.subject.toLocaleLowerCase() == 'they' ? 'are' : 'is'} amazing.
+			</p>
+		</div>
 
-	<div class="input-group">
-		<label for="object">object</label>
-		<input name="object" bind:value={person.object} />
-		<p class="note">Give an award to {person.object.toLocaleLowerCase()}.</p>
-	</div>
+		<div class="input-group">
+			<label for="object">object</label>
+			<input name="object" bind:value={person.object} />
+			<p class="note">Give an award to {person.object.toLocaleLowerCase()}.</p>
+		</div>
 
-	<div class="input-group">
-		<label for="posessive">posessive</label>
-		<input name="posessive" bind:value={person.posessive} />
-		<p class="note">{person.posessive} brain is intimidating!</p>
-	</div>
+		<div class="input-group">
+			<label for="posessive">posessive</label>
+			<input name="posessive" bind:value={person.posessive} />
+			<p class="note">{person.posessive} brain is intimidating!</p>
+		</div>
 
-	<div class="input-group">
-		<label for="posessive-pronoun">posessive pronoun</label>
-		<input name="posessive-pronoun" bind:value={person.posessivePronoun} />
-		<p class="note">
-			{person.subject}
-			thinks the cat is
-			{person.posessivePronoun.toLocaleLowerCase()}
-			but the cat thinks otherwise.
-		</p>
-	</div>
+		<div class="input-group">
+			<label for="posessive-pronoun">posessive pronoun</label>
+			<input name="posessive-pronoun" bind:value={person.posessivePronoun} />
+			<p class="note">
+				{person.subject}
+				thinks the cat is
+				{person.posessivePronoun.toLocaleLowerCase()}
+				but the cat thinks otherwise.
+			</p>
+		</div>
 
-	<div class="input-group">
-		<label for="reflexive">reflexive</label>
-		<input name="reflexive" bind:value={person.reflexive} />
-		<p class="note">{person.subject} thinks highly of {person.reflexive.toLocaleLowerCase()}.</p>
-	</div>
+		<div class="input-group">
+			<label for="reflexive">reflexive</label>
+			<input name="reflexive" bind:value={person.reflexive} />
+			<p class="note">{person.subject} thinks highly of {person.reflexive.toLocaleLowerCase()}.</p>
+		</div>
 
-	<div class="input-group">
-		<label for="emoji">emoji</label>
-		<input name="emoji" bind:value={person.emoji} />
-		<p class="note">This/these emoji say something about you. {person.emoji}</p>
-	</div>
+		<div class="input-group">
+			<label for="emoji">emoji</label>
+			<input name="emoji" bind:value={person.emoji} />
+			<p class="note">This/these emoji say something about you. {person.emoji}</p>
+		</div>
 
-	<div class="input-group">
-		<label for="colour">colour</label>
-		<input name="colour" bind:value={person.colour} type="color" />
-		<p class="note">
-			This is the background colour of the badge ({person.colour}: A hex colour)
-		</p>
-	</div>
+		<div class="input-group">
+			<label for="colour">colour</label>
+			<input name="colour" bind:value={person.colour} type="color" />
+			<p class="note">
+				This is the background colour of the badge ({person.colour}: A hex colour)
+			</p>
+		</div>
 
-	<div class="input-group">
-		<label for="height">height</label>
-		<input name="height" bind:value={person.height} />
-		<p class="note">The image sent back will be {person.height}px high.</p>
-	</div>
+		<div class="input-group">
+			<label for="height">height</label>
+			<input name="height" bind:value={person.height} />
+			<p class="note">The image sent back will be {person.height}px high.</p>
+		</div>
 
-	<div class="input-group">
-		<label for="sep">separator</label>
-		<input name="sep" bind:value={person.sep} />
-		<p class="note">
-			Each section will be separated by this/these characters. e.g. 👁{person.sep}👄{person.sep}👁
-		</p>
-	</div>
+		<div class="input-group">
+			<label for="sep">separator</label>
+			<input name="sep" bind:value={person.sep} />
+			<p class="note">
+				Each section will be separated by this/these characters. e.g. 👁{person.sep}👄{person.sep}👁
+			</p>
+		</div>
 
-	<!-- TODO: waiting fo`r the server to accept it -->
-	<!-- <div class="input-group">
+		<!-- TODO: waiting fo`r the server to accept it -->
+		<!-- <div class="input-group">
     <label for="note">note</label>
     <input name="note" bind:value={person.note} />
     <p class="note">
@@ -190,25 +190,27 @@
       you?
     </p>
   </div> -->
-</form>
+	</form>
 
-<!-- <div class="photos">
-  {#each photos as photo}
-    <figure class="example-person">
-      <img class="mini-example" alt="A pronoun badge that reads {altText}" src={url} /><br>
-      <img src={photo.thumbnailUrl} alt={photo.title} />
-      <figcaption>
-        {photo.subject},
-        {photo.object},
-        {photo.posessive},
-        {photo.posessivePronoun},
-        {photo.reflexive}
-      </figcaption>
-    </figure>
-  {:else} 
-    <p data-comment="this block renders when photos.length === 0">loading...</p>
-  {/each}
-</div> -->
+	<div class="photos">
+		{#each photos as photo}
+			<figure class="example-person">
+				<img class="mini-example" alt="A pronoun badge that reads {altText}" src={url} /><br />
+				<img src={photo.thumbnailUrl} alt={photo.title} />
+				<figcaption>
+					{photo.subject},
+					{photo.object},
+					{photo.posessive},
+					{photo.posessivePronoun},
+					{photo.reflexive}
+				</figcaption>
+			</figure>
+		{:else}
+			<p data-comment="this block renders when photos.length === 0">loading...</p>
+		{/each}
+	</div>
+</div>
+
 <style>
 	input {
 		font-size: 130%;
@@ -221,12 +223,6 @@
 	.input-group .note {
 		font-family: cursive;
 		margin-top: 0;
-	}
-	.live-badge {
-		max-width: 100%;
-	}
-	.smallcaps {
-		font-variant-caps: all-small-caps;
 	}
 	.photos {
 		display: flex;
@@ -244,16 +240,35 @@
 		padding: 1rem;
 		/* max-width: 40rem; */
 	}
-	.the-url code {
-		font-size: 150%;
-	}
 	.photos .mini-example {
 		max-width: 6rem;
 	}
 	.example-person {
 		max-width: 10rem;
 	}
+	.photos {
+		display: none;
+	}
 	@media screen and (min-width: 650px) {
+		.wrapper {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+			gap: 0px 0px;
+			grid-template-areas:
+				'code form'
+				'examples form';
+		}
+		.the-url {
+			grid-area: code;
+		}
+		form {
+			grid-area: form;
+		}
+		.photos {
+			grid-area: examples;
+			display: initial;
+		}
 		.input-group label {
 			width: 6rem;
 			display: inline-block;
