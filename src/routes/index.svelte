@@ -7,7 +7,7 @@
 </svelte:head>
 
 <main>
-	<h1>Hello world!</h1>
+	<h1>Pronoun Badge</h1>
 
 	<Counter />
 
