@@ -17,7 +17,7 @@
 	$: altText = makeText(person);
 	$: url = buildURL(person);
 
-	function buildURL() {
+	function _buildURL(person) {
 		let parts = [];
 		if (person.subject) parts.push(`subject=${person.subject}&`);
 		if (person.object) parts.push(`object=${person.object}&`);
@@ -35,8 +35,11 @@
 		}
 		return url;
 	}
+	function buildURL() {
+		return _buildURL(person);
+	}
 
-	function makeText() {
+	function _makeText(person) {
 		let parts = [];
 		if (person.subject) parts.push(person.subject);
 		if (person.object) parts.push(person.object);
@@ -49,6 +52,10 @@
 		return text;
 	}
 
+	function makeText() {
+		return _makeText(person);
+	}
+
 	import { onMount } from 'svelte';
 
 	let photos = [];
@@ -56,7 +63,7 @@
 	onMount(async () => {
 		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=4`);
 		const theJson = await res.json();
-		const examplePeople = [
+		let examplePeople = [
 			{
 				subject: 'Zie',
 				object: 'Zim',
@@ -90,11 +97,15 @@
 				colour: '#009688'
 			}
 		];
+		for (const p of examplePeople) {
+			p.url = _buildURL(p);
+			p.altText = _makeText(p);
+			console.log(p);
+		}
 
 		theJson, examplePeople;
 		let temp = [];
 		theJson.forEach((e, i) => temp.push({ ...e, ...examplePeople[i] }));
-		console.log(temp);
 		photos = temp;
 	});
 </script>
@@ -192,7 +203,11 @@
 	<div class="photos">
 		{#each photos as photo}
 			<figure class="example-person">
-				<img class="mini-example" alt="A pronoun badge that reads {altText}" src={url} /><br />
+				<img
+					class="mini-example"
+					alt="A pronoun badge that reads {photo.altText}"
+					src={photo.url}
+				/><br />
 				<img src={photo.thumbnailUrl} alt={photo.title} />
 				<figcaption>
 					{photo.subject},
