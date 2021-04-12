@@ -1,112 +1,112 @@
 <script>
-	let person = {
-	  subject: "He",
-	  object: "Him",
-	  posessive: "His",
-	  posessivePronoun: "His",
-	  reflexive: "Himself",
-	  emoji: "👫",
-	  colour: "#B00B55",
-	  height: "60",
-	  sep: "|",
-	  note: "",
-	};
+  let person = {
+    subject: "He",
+    object: "Him",
+    posessive: "His",
+    posessivePronoun: "His",
+    reflexive: "Himself",
+    emoji: "👫",
+    colour: "#B00B55",
+    height: "60",
+    sep: "|",
+    note: "",
+  };
   
-	$: altText = makeText(person);
-	$: url = buildURL(person);
+  $: altText = makeText(person);
+  $: url = buildURL(person);
   
-	function buildURL() {
-	  let parts = [];
-	  if (person.subject) parts.push(`subject=${person.subject}&`);
-	  if (person.object) parts.push(`object=${person.object}&`);
-	  if (person.posessive) parts.push(`posessive=${person.posessive}&`);
-	  if (person.posessivePronoun)
-		parts.push(`posessive-pronoun=${person.posessivePronoun}&`);
-	  if (person.reflexive) parts.push(`reflexive=${person.reflexive}&`);
-	  if (person.emoji) parts.push(`emoji=${person.emoji}&`);
-	  if (person.colour) parts.push(`colour=${person.colour.replace("#", "")}&`);
-	  if (person.height) parts.push(`height=${person.height}&`);
-	  if (person.sep) parts.push(`sep=${person.sep}&`);
-	  if (person.note) parts.push(`sep=${person.note}&`);
-	  url = "https://pronoun.cyou/x/y?" + parts.join("");
-	  if (url.slice(-1) == "&") {
-		url = url.slice(0, -1);
-	  }
-	  return url;
-	}
+  function buildURL() {
+    let parts = [];
+    if (person.subject) parts.push(`subject=${person.subject}&`);
+    if (person.object) parts.push(`object=${person.object}&`);
+    if (person.posessive) parts.push(`posessive=${person.posessive}&`);
+    if (person.posessivePronoun)
+    parts.push(`posessive-pronoun=${person.posessivePronoun}&`);
+    if (person.reflexive) parts.push(`reflexive=${person.reflexive}&`);
+    if (person.emoji) parts.push(`emoji=${person.emoji}&`);
+    if (person.colour) parts.push(`colour=${person.colour.replace("#", "")}&`);
+    if (person.height) parts.push(`height=${person.height}&`);
+    if (person.sep) parts.push(`sep=${person.sep}&`);
+    if (person.note) parts.push(`sep=${person.note}&`);
+    url = "https://pronoun.cyou/x/y?" + parts.join("");
+    if (url.slice(-1) == "&") {
+    url = url.slice(0, -1);
+    }
+    return url;
+  }
   
-	function makeText() {
-	  let parts = [];
-	  if (person.subject) parts.push(person.subject);
-	  if (person.object) parts.push(person.object);
-	  if (person.posessive) parts.push(person.posessive);
-	  if (person.posessivePronoun) parts.push(person.posessivePronoun);
-	  if (person.reflexive) parts.push(person.reflexive);
-	  if (person.emoji) parts.push(person.emoji); // this seems to break sapper
-	  let text = parts.join(person.sep || "|");
+  function makeText() {
+    let parts = [];
+    if (person.subject) parts.push(person.subject);
+    if (person.object) parts.push(person.object);
+    if (person.posessive) parts.push(person.posessive);
+    if (person.posessivePronoun) parts.push(person.posessivePronoun);
+    if (person.reflexive) parts.push(person.reflexive);
+    if (person.emoji) parts.push(person.emoji); // this seems to break sapper
+    let text = parts.join(person.sep || "|");
   
-	  return text;
-	}
+    return text;
+  }
   
-	import { onMount } from "svelte";
+  import { onMount } from "svelte";
   
-	let photos = [];
+  let photos = [];
   
-	onMount(async () => {
-	  const res = await fetch(
-		`https://jsonplaceholder.typicode.com/photos?_limit=4`
-	  );
-	  const theJson = await res.json();
-	  const examplePeople = [
-		{
-		  subject: "Zie",
-		  object: "Zim",
-		  posessive: "Zis",
-		  posessivePronoun: "Zir",
-		  reflexive: "Zieself",
-		},
-		{
-		  subject: "She",
-		  object: "Her",
-		  posessive: "Hers",
-		  posessivePronoun: "Her",
-		  reflexive: "Herself",
-		},
-		{
-		  subject: "He",
-		  object: "Him",
-		  posessive: "His",
-		  posessivePronoun: "His",
-		  reflexive: "Himself",
-		},
-		{
-		  subject: "Hep",
-		  object: "Himp",
-		  posessive: "His",
-		  posessivePronoun: "His",
-		  reflexive: "Himself",
-		},
-		{
-		  subject: "1",
-		  object: "2",
-		  posessive: "3",
-		  posessivePronoun: "3",
-		  reflexive: "5",
-		},
-	  ];
+  onMount(async () => {
+    const res = await fetch(
+    `https://jsonplaceholder.typicode.com/photos?_limit=4`
+    );
+    const theJson = await res.json();
+    const examplePeople = [
+      {
+        subject: "Zie",
+        object: "Zim",
+        posessive: "Zis",
+        posessivePronoun: "Zir",
+        reflexive: "Zieself",
+      },
+      {
+        subject: "She",
+        object: "Her",
+        posessive: "Hers",
+        posessivePronoun: "Her",
+        reflexive: "Herself",
+      },
+      {
+        subject: "He",
+        object: "Him",
+        posessive: "His",
+        posessivePronoun: "His",
+        reflexive: "Himself",
+      },
+      {
+        subject: "Hep",
+        object: "Himp",
+        posessive: "His",
+        posessivePronoun: "His",
+        reflexive: "Himself",
+      },
+      {
+        subject: "1",
+        object: "2",
+        posessive: "3",
+        posessivePronoun: "3",
+        reflexive: "5",
+      },
+    ];
   
-	  theJson, examplePeople;
-	  let temp = [];
-	  theJson.forEach((e, i) => temp.push({ ...e, ...examplePeople[i] }));
-	  console.log(temp);
-	  photos = temp;
-	});
+    theJson, examplePeople;
+    let temp = [];
+    theJson.forEach((e, i) => temp.push({ ...e, ...examplePeople[i] }));
+    console.log(temp);
+    photos = temp;
+  });
   </script>
   
   
 
 <svelte:head>
-	<title>Pronoun Badge</title>
+  <title>Pronoun Badge</title>
 </svelte:head>
 
 <div class="the-url">
