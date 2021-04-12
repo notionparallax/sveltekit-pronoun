@@ -1,5 +1,5 @@
 <script>
-	import { TheURL_display } from './TheURL_display.svelte';
+	import UrlDisplay  from './UrlDisplay.svelte';
 
 	let person = {
 		subject: 'He',
@@ -106,24 +106,7 @@
 	<title>Pronoun Badge</title>
 </svelte:head>
 
-<div class="the-url">
-	<a href={url} target="_blank"><code>{@html url.replace(/(\/+|\?|\&)/gm, `$1<wbr>`)}</code></a>
-	<p>
-		Copy this text and paste it into <a
-			href="https://github.com/notionparallax"
-			title="this one is mine">your</a
-		>
-		<a
-			href="https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme"
-			title="here's how to make one of those">GitHub profile repo</a
-		>, or wherever you can write <span class="smallcaps">html</span> or markdown.
-	</p>
-	<figure>
-		<img class="live-badge" alt="A pronoun badge that reads {altText}" src={url} />
-		<figcaption>This is the generated badge at that URL.</figcaption>
-		<!-- Alt text: {altText} -->
-	</figure>
-</div>
+<UrlDisplay {url} {altText}/>
 
 <form>
 	<p>
@@ -254,7 +237,6 @@
 		align-items: flex-start;
 	}
 	form,
-	.the-url,
 	.photos {
 		background: white;
 		margin: 1rem 2rem;
@@ -290,7 +272,6 @@
 			align-items: flex-start;
 		}
 		form,
-		.the-url,
 		.photos {
 			background: white;
 			margin: 1rem 2rem;
