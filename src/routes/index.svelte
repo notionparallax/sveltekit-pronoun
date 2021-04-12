@@ -111,16 +111,20 @@
 	<title>Pronoun Badge</title>
 </svelte:head>
 
-<p>alt text: {altText}</p>
+<div class="the-url">
+  <a href={url} target="_blank"><code>{@html url.replace("&","<wbr>&")}</code></a>
+  <p>Copy this text and paste it into <a href="https://github.com/notionparallax" title="this one is mine">your</a> <a href="https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme" title="here's how to make one of those">GitHub profile repo</a>, or wherever you can write html or markdown.</p>
+  <figure>
+    <img alt="A pronoun badge that reads {altText}" src={url} />
+    <figcaption>This is the generated badge at that URL. Alt text: {altText}</figcaption>
+  </figure>
+</div>
 
-<div class="the-url"><a href={url} target="_blank"><code>{@html url.replace("&","<wbr>&")}</code></a></div>
-
-<figure>
-  <img alt="A pronoun badge that reads {altText}" src={url} />
-  <figcaption>This is the generated badge at that URL</figcaption>
-</figure>
 
 <form>
+  <p>Fill in this form with your pronouns. The code snippet above will update as 
+    you go.<br>
+    If you don't want to include a section, just leave it blank.</p>
   <div class="input-group">
     <label for="subject">subject</label>
     <input name="subject" bind:value={person.subject} />
@@ -130,7 +134,7 @@
   <div class="input-group">
     <label for="object">object</label>
     <input name="object" bind:value={person.object} />
-    <p class="note">Give an award to {person.object}.</p>
+    <p class="note">Give an award to {person.object.toLocaleLowerCase()}.</p>
   </div>
 
   <div class="input-group">
@@ -145,7 +149,7 @@
     <p class="note">
       {person.subject}
       thinks the cat is
-      {person.posessivePronoun}
+      {person.posessivePronoun.toLocaleLowerCase()}
       but the cat thinks otherwise.
     </p>
   </div>
@@ -153,7 +157,7 @@
   <div class="input-group">
     <label for="reflexive">reflexive</label>
     <input name="reflexive" bind:value={person.reflexive} />
-    <p class="note">{person.subject} thinks highly of {person.reflexive}.</p>
+    <p class="note">{person.subject} thinks highly of {person.reflexive.toLocaleLowerCase()}.</p>
   </div>
 
   <div class="input-group">
@@ -197,20 +201,56 @@
   </div> -->
 </form>
 
-<div class="photos">
+<!-- <div class="photos">
   {#each photos as photo}
-    <figure>
+    <figure class="example-person">
+      <img class="mini-example" alt="A pronoun badge that reads {altText}" src={url} /><br>
       <img src={photo.thumbnailUrl} alt={photo.title} />
       <figcaption>
-        {photo.subject}<br />
-        {photo.object}<br />
-        {photo.posessive}<br />
-        {photo.posessivePronoun}<br />
-        {photo.reflexive}<br />
+        {photo.subject},
+        {photo.object},
+        {photo.posessive},
+        {photo.posessivePronoun},
+        {photo.reflexive}
       </figcaption>
     </figure>
-  {:else}
-    <!-- this block renders when photos.length === 0 -->
-    <p>loading...</p>
+  {:else} 
+    <p data-comment="this block renders when photos.length === 0">loading...</p>
   {/each}
-</div>
+</div> -->
+
+<style>
+	.input-group label {
+    width: 10rem;
+    outline: 1px blue;
+    display: inline-block;
+    text-align: end;
+	}
+	.input-group .note {
+		display: inline-block;
+		max-width: 15rem;
+	}
+	.photos {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-content: stretch;
+		align-items: flex-start;
+	}
+	form, 
+  .the-url {
+		background: white;
+		margin: 1rem 2rem;
+		border-radius: 2rem;
+		padding: 1rem;
+		max-width: 40rem;
+	}
+  .the-url code{
+    font-size: 200%;
+  }
+  .photos .mini-example {
+      max-width: 10rem;
+  }
+  .example-person{max-width: 10rem;}
+</style>
