@@ -1,5 +1,5 @@
 <script>
-	import UrlDisplay from './UrlDisplay.svelte';
+	import UrlDisplay from './_URLpanel.svelte';
 
 	let person = {
 		subject: 'He',
@@ -241,12 +241,18 @@
 	<div class="explainer">
 		<h1>So, what is this?</h1>
 		<p>
-			This is a way for me, <a href="https://notionparallax.co.uk/me">Ben</a>, to learn the web
-			framework
+			This is a way for <a href="https://notionparallax.co.uk/me" title="Ben Doherty">me</a>, to
+			learn the web framework
 			<a href="https://svelte.dev/">Svelte</a>. It's also an attempt to make something useful in a
 			series of one day bursts when I get sick of all my other projects. You can put this image
 			<span class="smallcaps">URL</span> anywhere that you can control the markup. The obvious place
 			is in your GitHub profile repo.
+		</p>
+		<p>
+			For the moment, the repo for the back end is <a
+				href="https://github.com/notionparallax/pronoun-badge">here</a
+			>
+			and the front end is <a href="https://github.com/notionparallax/sveltekit-pronoun">here</a>.
 		</p>
 	</div>
 </div>

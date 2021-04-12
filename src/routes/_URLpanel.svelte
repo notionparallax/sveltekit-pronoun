@@ -1,6 +1,6 @@
 <script>
-	export let url;
-	export let altText;
+	export let url = '';
+	export let altText = "alt text isn't working for some reason";
 </script>
 
 <div class="the-url">
