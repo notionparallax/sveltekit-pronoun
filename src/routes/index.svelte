@@ -61,7 +61,7 @@
 	let photos = [];
 
 	onMount(async () => {
-		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=4`);
+		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=6`);
 		const theJson = await res.json();
 		let examplePeople = [
 			{
@@ -90,6 +90,22 @@
 			},
 			{
 				subject: 'Hep',
+				object: 'Himp',
+				posessive: 'His',
+				posessivePronoun: 'His',
+				reflexive: 'Himself',
+				colour: '#009688'
+			},
+			{
+				subject: 'cat',
+				object: 'Him',
+				posessive: 'His',
+				posessivePronoun: 'His',
+				reflexive: 'Himself',
+				colour: '#9e9e9e'
+			},
+			{
+				subject: 'elf',
 				object: 'Himp',
 				posessive: 'His',
 				posessivePronoun: 'His',
@@ -266,7 +282,6 @@
 		/* max-width: 40rem; */
 	}
 	.photos .mini-example {
-		max-width: 6rem;
 	}
 	.example-person {
 		max-width: 10rem;
@@ -312,8 +327,8 @@
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
-			justify-content: flex-start;
-			align-content: stretch;
+			justify-content: center;
+			align-content: flex-start;
 			align-items: flex-start;
 		}
 		form,
@@ -328,10 +343,9 @@
 			font-size: 200%;
 		}
 		.photos .mini-example {
-			max-width: 10rem;
 		}
 		.example-person {
-			max-width: 10rem;
+			max-width: 7rem;
 		}
 	}
 </style>
