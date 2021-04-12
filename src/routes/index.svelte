@@ -221,6 +221,18 @@
 			<p data-comment="this block renders when photos.length === 0">loading...</p>
 		{/each}
 	</div>
+
+	<div class="explainer">
+		<h1>So, what is this?</h1>
+		<p>
+			This is a way for me, <a href="https://notionparallax.co.uk/me">Ben</a>, to learn the web
+			framework
+			<a href="https://svelte.dev/">Svelte</a>. It's also an attempt to make something useful in a
+			series of one day bursts when I get sick of all my other projects. You can put this image
+			<span class="smallcaps">URL</span> anywhere that you can control the markup. The obvious place
+			is in your GitHub profile repo.
+		</p>
+	</div>
 </div>
 
 <style>
@@ -245,7 +257,8 @@
 		align-items: flex-start;
 	}
 	form,
-	.photos {
+	.photos,
+	.explainer {
 		background: white;
 		margin: 1rem 2rem;
 		border-radius: 2rem;
@@ -265,12 +278,13 @@
 		.wrapper {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 1fr 1fr 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr;
 			gap: 0px 0px;
 			grid-template-areas:
 				'code form'
 				'examples form'
-				'examples form';
+				'examples form'
+				'explainer explainer';
 		}
 		.the-url {
 			grid-area: code;
@@ -281,6 +295,9 @@
 		.photos {
 			grid-area: examples;
 			display: initial;
+		}
+		.explainer {
+			grid-area: explainer;
 		}
 		.input-group label {
 			width: 6rem;
