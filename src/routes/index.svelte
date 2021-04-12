@@ -6,7 +6,7 @@
 	  posessivePronoun: "His",
 	  reflexive: "Himself",
 	  emoji: "👫",
-	  colour: "B00B55",
+	  colour: "#B00B55",
 	  height: "60",
 	  sep: "|",
 	  note: "",
@@ -97,9 +97,7 @@
   
 	  theJson, examplePeople;
 	  let temp = [];
-	  theJson.forEach((e, i) => {
-		temp.push({ ...e, ...examplePeople[i] });
-	  });
+	  theJson.forEach((e, i) => temp.push({ ...e, ...examplePeople[i] }));
 	  console.log(temp);
 	  photos = temp;
 	});
@@ -112,11 +110,12 @@
 </svelte:head>
 
 <div class="the-url">
-  <a href={url} target="_blank"><code>{@html url.replace("&","<wbr>&")}</code></a>
-  <p>Copy this text and paste it into <a href="https://github.com/notionparallax" title="this one is mine">your</a> <a href="https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme" title="here's how to make one of those">GitHub profile repo</a>, or wherever you can write html or markdown.</p>
+  <a href={url} target="_blank"><code>{@html url.replace(/(\/+|\?|\&)/gm,`$1<wbr>`)}</code></a>
+  <p>Copy this text and paste it into <a href="https://github.com/notionparallax" title="this one is mine">your</a> <a href="https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme" title="here's how to make one of those">GitHub profile repo</a>, or wherever you can write <span class="smallcaps">html</span> or markdown.</p>
   <figure>
-    <img alt="A pronoun badge that reads {altText}" src={url} />
-    <figcaption>This is the generated badge at that URL. Alt text: {altText}</figcaption>
+    <img class="live-badge" alt="A pronoun badge that reads {altText}" src={url} />
+    <figcaption>This is the generated badge at that URL. </figcaption>
+    <!-- Alt text: {altText} -->
   </figure>
 </div>
 
@@ -128,7 +127,7 @@
   <div class="input-group">
     <label for="subject">subject</label>
     <input name="subject" bind:value={person.subject} />
-    <p class="note">{person.subject} is amazing.</p>
+    <p class="note">{person.subject} {person.subject.toLocaleLowerCase() == "they"? "are" : "is"} amazing.</p>
   </div>
 
   <div class="input-group">
@@ -188,7 +187,7 @@
     </p>
   </div>
 
-  <!-- TODO: waiting for the server to accept it -->
+  <!-- TODO: waiting fo`r the server to accept it -->
   <!-- <div class="input-group">
     <label for="note">note</label>
     <input name="note" bind:value={person.note} />
@@ -220,37 +219,81 @@
 </div> -->
 
 <style>
-	.input-group label {
-    width: 10rem;
-    outline: 1px blue;
-    display: inline-block;
-    text-align: end;
-	}
-	.input-group .note {
-		display: inline-block;
-		max-width: 15rem;
-	}
-	.photos {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-content: stretch;
-		align-items: flex-start;
-	}
-	form, 
-  .the-url {
-		background: white;
-		margin: 1rem 2rem;
-		border-radius: 2rem;
-		padding: 1rem;
-		max-width: 40rem;
-	}
-  .the-url code{
-    font-size: 200%;
+    input {
+      font-size: 130%;
+      width: 7rem;
+    }
+    .input-group label {
+      font-weight: bold;
+      display: block;
+    }
+    .input-group .note {
+      font-family: cursive;
+      margin-top: 0;
+    }
+    .live-badge{
+      max-width: 100%;
+    }
+    .smallcaps {
+      font-variant-caps: all-small-caps;
+    }
+    .photos {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-content: stretch;
+      align-items: flex-start;
+    }
+    form, 
+    .the-url,
+    .photos   {
+      background: white;
+      margin: 1rem 2rem;
+      border-radius: 2rem;
+      padding: 1rem;
+      /* max-width: 40rem; */
+    }
+    .the-url code{
+      font-size: 150%;
+    }
+    .photos .mini-example {
+        max-width: 6rem;
+    }
+    .example-person{max-width: 10rem;}
+  @media screen and (min-width: 650px){
+    .input-group label {
+      width: 6rem;
+      display: inline-block;
+      text-align: end;
+    }
+    .input-group .note {
+      display: inline-block;
+      max-width: 17rem;
+    }
+    .photos {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-content: stretch;
+      align-items: flex-start;
+    }
+    form, 
+    .the-url,
+    .photos   {
+      background: white;
+      margin: 1rem 2rem;
+      border-radius: 2rem;
+      padding: 1rem;
+      /* max-width: 40rem; */
+    }
+    .the-url code{
+      font-size: 200%;
+    }
+    .photos .mini-example {
+        max-width: 10rem;
+    }
+    .example-person{max-width: 10rem;}
   }
-  .photos .mini-example {
-      max-width: 10rem;
-  }
-  .example-person{max-width: 10rem;}
 </style>
