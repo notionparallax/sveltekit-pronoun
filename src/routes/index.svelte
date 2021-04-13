@@ -70,15 +70,14 @@
 				posessive: 'Zis',
 				posessivePronoun: 'Zir',
 				reflexive: 'Zieself',
-				colour: '#00bcd4'
+				colour: '#00bcd4',
+				emoji: '🧑‍🤝‍🧑'
 			},
 			{
 				subject: 'She',
 				object: 'Her',
-				posessive: 'Hers',
-				posessivePronoun: 'Her',
-				reflexive: 'Herself',
-				colour: '#ffa000'
+				colour: '#ffa000',
+				emoji: '🧑‍🤝‍🍕'
 			},
 			{
 				subject: 'He',
@@ -226,11 +225,16 @@
 				/><br />
 				<img src={photo.thumbnailUrl} alt={photo.title} />
 				<figcaption>
-					{photo.subject},
-					{photo.object},
-					{photo.posessive},
-					{photo.posessivePronoun},
-					{photo.reflexive}
+					Inputs: {[
+						photo.subject || '',
+						photo.object || '',
+						photo.posessive || '',
+						photo.posessivePronoun || '',
+						photo.reflexive || '',
+						photo.emoji || ''
+					]
+						.filter((x) => x != '')
+						.join(', ')}
 				</figcaption>
 			</figure>
 		{:else}
