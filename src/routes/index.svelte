@@ -1,7 +1,8 @@
 <script>
 	import UrlDisplay from './_URLpanel.svelte';
+	import Badge from './_Badge.svelte';
 
-	let person = {
+	$: person = {
 		subject: 'He',
 		object: 'Him',
 		posessive: 'His',
@@ -128,8 +129,9 @@
 <svelte:head>
 	<title>Pronoun Badge</title>
 </svelte:head>
+<h1 class="big-heading">Pronoun Badge</h1>
 <div class="wrapper">
-	<UrlDisplay {url} {altText} />
+	<UrlDisplay {url} {altText} {person} />
 
 	<form>
 		<p>
@@ -218,11 +220,7 @@
 	<div class="photos">
 		{#each photos as photo}
 			<figure class="example-person">
-				<img
-					class="mini-example"
-					alt="A pronoun badge that reads {photo.altText}"
-					src={photo.url}
-				/><br />
+				<Badge {...photo} cssClass="mini-example" />
 				<img src={photo.thumbnailUrl} alt={photo.title} />
 				<figcaption>
 					Inputs: {[
@@ -285,11 +283,23 @@
 	form,
 	.photos,
 	.explainer {
-		background: white;
+		background: rgba(255, 255, 255, 0.8);
 		margin: 1rem 2rem;
 		border-radius: 2rem;
 		padding: 1rem;
-		/* max-width: 40rem; */
+	}
+	h1.big-heading {
+		animation: gradient 15s ease infinite;
+		background-size: 200% 200%;
+		background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-size: 700%;
+		max-width: 100vw;
+		position: absolute;
+		right: 0;
+		top: -1.2em;
+		z-index: -1;
 	}
 	.photos .mini-example {
 	}
@@ -298,6 +308,9 @@
 	}
 	.photos {
 		display: none;
+	}
+	figure {
+		margin: 0;
 	}
 	@media screen and (min-width: 650px) {
 		.wrapper {
@@ -341,21 +354,15 @@
 			align-content: flex-start;
 			align-items: flex-start;
 		}
-		form,
-		.photos {
-			background: white;
-			margin: 1rem 2rem;
-			border-radius: 2rem;
-			padding: 1rem;
-			/* max-width: 40rem; */
-		}
 		.the-url code {
 			font-size: 200%;
 		}
 		.photos .mini-example {
+			max-width: 90%;
 		}
 		.example-person {
-			max-width: 7rem;
+			max-width: 10rem;
+			margin: 0.5rem;
 		}
 	}
 </style>
