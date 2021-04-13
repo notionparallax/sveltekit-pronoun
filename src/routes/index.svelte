@@ -2,7 +2,7 @@
 	import UrlDisplay from './_URLpanel.svelte';
 	import Badge from './_Badge.svelte';
 
-	$: person = {
+	let person = {
 		subject: 'He',
 		object: 'Him',
 		posessive: 'His',
