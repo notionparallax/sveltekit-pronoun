@@ -43,41 +43,55 @@
 	</figure>
 </div>
 
-<!-- Alt text: {altText} -->
 <style>
-	.the-url {
-		background: rgba(255, 255, 255, 0.8);
-		margin: 1rem 2rem;
-		border-radius: 2rem;
-		padding: 1rem;
-	}
-	a.display-url {
-		text-decoration: none;
-		font-weight: bold;
-	}
-	.live-badge {
-		max-width: 100%;
-	}
-	.smallcaps {
-		font-variant-caps: all-small-caps;
-	}
-	.the-url {
-		margin: 1rem 2rem;
-		border-radius: 2rem;
-		padding: 1rem;
-	}
-	.the-url code {
-		font-size: 150%;
-	}
-	@media screen and (min-width: 650px) {
-		.the-url code {
-			font-size: 200%;
-		}
-		figure {
-			margin: 0;
-		}
-		img {
-			max-width: 100%;
-		}
+  .the-url {
+    background: rgba(255, 255, 255, 0.8);
+    margin: 1rem 2rem;
+    border-radius: 2rem;
+    padding: 1rem;
+  }
+  
+  a.display-url {
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .live-badge {
+    max-width: 100%;
+  }
+  .smallcaps {
+    font-variant-caps: all-small-caps;
+  }
+  .the-url {
+    margin: 1rem 2rem;
+    border-radius: 2rem;
+    padding: 1rem;
+  }
+  .the-url code {
+    font-size: 150%;
+    display: inline-block;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    background: rgb(255 255 255 / 50%);
+    position: relative;
+  }
+  img {
+    max-width: 100%;
+  }
+  .copy-note {
+    font-size: 40%;
+    display: block;
+    position: absolute;
+    right: 0.3rem;
+    opacity: 0.5;
+    bottom: 0.3rem;
+  }
+  .copy-note:hover {opacity: 1;}
+  @media screen and (min-width: 650px) {
+    .the-url code {
+      font-size: 200%;
+    }
+    figure {
+      margin: 0;
+    }
 	}
 </style>
