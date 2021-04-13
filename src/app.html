@@ -8,13 +8,22 @@
 
 		<style>
 			body {
-				background: rgb(131, 58, 180);
-				background: linear-gradient(
-					65deg,
-					rgba(131, 58, 180, 1) 0%,
-					rgba(243, 69, 252, 1) 80%,
-					rgba(29, 253, 39, 1) 100%
-				);
+				/* Background animation pulled straight from https://codepen.io/P1N2O/pen/pyBNzX by Manuel Pinto */
+				background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+				background-size: 400% 400%;
+				animation: gradient 15s ease infinite;
+			}
+
+			@keyframes gradient {
+				0% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+				100% {
+					background-position: 0% 50%;
+				}
 			}
 		</style>
 	</head>
