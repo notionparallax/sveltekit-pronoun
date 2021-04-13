@@ -4,12 +4,28 @@
 	export let person;
 
 	import Badge from './_Badge.svelte';
+
+	const stringToClipboard = (str) => {
+		const el = document.createElement('textarea');
+		el.value = str;
+		document.body.appendChild(el);
+		el.select();
+		document.execCommand('copy');
+		document.body.removeChild(el);
+	};
+  const copyToClipboard = () =>{
+    const t = document.getElementById("the-actual-url").innerText;
+    stringToClipboard(t)
+  }
 </script>
 
 <div class="the-url">
-	<a class="display-url" href={url} target="_blank"
-		><code>{@html url.replace(/(\/+|\?|\&)/gm, `$1<wbr>`)}</code></a
-	>
+	<!-- <a class="display-url" href={url} target="_blank"> -->
+	<code on:click={copyToClipboard}>
+    <span id="the-actual-url">{@html url.replace(/(\/+|\?|\&)/gm, `$1<wbr>`)}</span>
+    <span class="copy-note">Click to copy this to your clipboard 📄</span>
+  </code>
+	<!-- </a> -->
 	<p>
 		Copy this text and paste it into <a
 			href="https://github.com/notionparallax"
